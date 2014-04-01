@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+location_idx = 0
+locations = []
+File.open(File.expand_path("../../data/manual_cleaning.txt",__FILE__), 'r').each_line do |line|
+  line.strip!
+  next if line == ""
+  if line =~ /^#{location_idx+1}\./
+    location_idx += 1
+  end
+  locations[location_idx] ||= []
+  locations[location_idx] << line
+end
+
+locations[1..5].each do |location|
+  id, title, addr, title2, *desc, years = location
+  p [id, title, addr, title2, desc, years]
+end
+
