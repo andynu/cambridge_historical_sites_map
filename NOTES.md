@@ -3,21 +3,19 @@ Goal:
 
 * get data
 
-Find all the locations in here:
+Find all the locations in (markers html)[http://www2.cambridgema.gov/historic/markers.html]
 
-    http://www2.cambridgema.gov/historic/markers.html
+ugh. it is an awkward pdf (markers pdf)[http://www2.cambridgema.gov/historic/markers_text.pdf]
 
-ugh. 
+lets try free ocr (onlineocr)[http://www.onlineocr.net/]
 
-    http://www2.cambridgema.gov/historic/markers_text.pdf
+had to register, but totally worked!  see data/raw.txt
+still inconsistencies. probably faster to do a manual pass. data/manual_cleaning.txt
 
-lets try: 
+* map the data
 
-    http://www.onlineocr.net/
+https://developers.google.com/maps/documentation/javascript/
 
-had to register, but totally worked!
+https://developers.google.com/maps/documentation/javascript/examples/
 
-    data/raw_addresses.txt
-
-
-And plot them on a google map.
+api key generated, client_secrets.json (gitignored)
