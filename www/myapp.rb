@@ -35,7 +35,7 @@ def google_maps_api_key
 end
 
 get '/' do
-  data_file = File.expand_path("../public/data.csv",__FILE__)
+  data_file = File.expand_path("../public/blue_oval_markers.csv",__FILE__)
   @google_maps_api_key = google_maps_api_key
   @locations = csv_to_json(data_file)
   haml :index

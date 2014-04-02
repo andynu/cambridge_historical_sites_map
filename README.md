@@ -17,6 +17,10 @@ had to register, but totally worked!  see data/raw.txt
 still inconsistencies. probably faster to do a manual pass. 
 [see manual_cleaning.txt](manual_cleaning.txt)
 
+### geocode the data
+
+Used the [geocoder gem](http://www.rubygeocoder.com/). 
+
 ### map the data
 
 * [google maps api](https://developers.google.com/maps/documentation/javascript/)

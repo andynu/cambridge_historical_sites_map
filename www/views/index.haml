@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} Cambridge Historical Sites
+      %a.navbar-brand{:href => "#"} Blue Oval Markers
     / Collect the nav links, forms, and other content for toggling
     #chs_nav.collapse.navbar-collapse
       /%ul.nav.navbar-nav
@@ -17,7 +17,37 @@
       /    %a{:href => "#"} b
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{:href => "#details"} Details
+          %a{:href => "#about"} About
 #map
 :javascript
   window.map_locations = #{@locations}
+
+%a{name:'about'}
+%h2 Blue Oval Markers
+%blockquote
+  Blue Oval Historic Markers  Starting in 1976, the Cambridge Historical
+  Commission started its marker program (blue oval markers). Nearly one hundred
+  of these blue oval markers are scattered throughout the city, marking sites of
+  historical importance. The sites were chosen, not for the architectural
+  significance of the existing structures, but for the sites' relationship to
+  important events or persons.  Note:  The presence of a blue oval historic
+  marker   does not  mean that the structure on the site is a designated property
+  with regulatory protection from inappropriate change. For a list of properties
+  that are regulated by the Cambridge Historical Commission or one of the
+  neighborhood conservation district commissions, check the Designated Property
+  List.  You might also be interested in reading the list of local landmarks,
+  which can be found at the end of the page that describes the landmark
+  designation process in Cambridge.
+
+  %footer
+    %a{href:'http://www2.cambridgema.gov/historic/markers.html'} Cambridge Historical Commission Historical Marker Program
+
+%h2 Data
+%a.btn.btn-primary.btn-lg{href:'blue_oval_markers.csv'}
+  %i.glyphicon.glyphicon-download
+  %b Text
+  %small (csv)
+%a.btn.btn-default.btn-lg{href:'http://www2.cambridgema.gov/historic/markers_text.pdf'}
+  %i.glyphicon.glyphicon-download
+  %b PDF
+  %small (from cambridgema.gov)
