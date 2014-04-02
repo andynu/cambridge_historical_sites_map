@@ -31,7 +31,7 @@ def csv_to_json(csv_file)
 end
 
 def google_maps_api_key
-  IO.read(File.expand_path("../google_maps_api.key",__FILE__).strip)
+  IO.read(File.expand_path("../../google_maps_api.key",__FILE__).strip)
 end
 
 get '/' do
