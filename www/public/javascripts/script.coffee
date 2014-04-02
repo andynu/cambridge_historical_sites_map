@@ -1,3 +1,9 @@
+main = ->
+  init_map()
+  
+  stc = -> window.scrollTo(0,1)
+  setTimeout(stc, 300)
+
 init_map = ->
   mapStyles = [
     {
@@ -20,10 +26,11 @@ init_map = ->
       ]
     }
   ]
-  styledMap = new google.maps.StyledMapType(mapStyles, {name: 'Cambridge Historical'})
+  styledMap = new google.maps.StyledMapType(mapStyles, {name: 'Blue'})
 
 
-  map = new google.maps.Map $('#map')[0], {
+  $map = $('#map')
+  map = new google.maps.Map $map[0], {
     zoom: 20,
     #mapTypeId: google.maps.MapTypeId.TERRAIN,
     center: new google.maps.LatLng(42.3945028821,-71.1199435396),
@@ -34,7 +41,6 @@ init_map = ->
 
   map.mapTypes.set('map_style', styledMap)
   map.setMapTypeId('map_style')
-
 
   infowindow = new google.maps.InfoWindow({
     content: """
@@ -78,11 +84,17 @@ init_map = ->
       null
     null
 
+
+  nav_margin = 20
+  $map.height($(window).height() - $('nav').height() - 2*nav_margin)
+
   bounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(42.3988166,-71.1706004),
     new google.maps.LatLng(42.35234,-71.063234)
   )
   map.fitBounds(bounds)
-  map.panToBounds(bounds)
+  #map.panToBounds(bounds)
 
-$ init_map
+  
+
+$ main
