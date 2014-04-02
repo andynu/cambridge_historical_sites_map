@@ -17,6 +17,8 @@ GEM
       rack
     ref (1.0.5)
     sass (3.3.4)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -35,6 +37,7 @@ DEPENDENCIES
   haml (~> 3.1.8)
   rack-coffee (~> 1.0.3)
   sass (~> 3.3.4)
+  shotgun (~> 0.9)
   sinatra (~> 1.4.4)
   terminal-table (~> 1.4.5)
   therubyracer (~> 0.12.1)

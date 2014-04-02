@@ -1,4 +1,23 @@
-%h1 Cambridge Maps
+%nav.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#chs_nav", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} Cambridge Historical Sites
+    / Collect the nav links, forms, and other content for toggling
+    #chs_nav.collapse.navbar-collapse
+      /%ul.nav.navbar-nav
+      /  %li.active
+      /    %a{:href => "#"} a
+      /  %li
+      /    %a{:href => "#"} b
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "#details"} Details
 #map
 :javascript
   window.map_locations = #{@locations}
