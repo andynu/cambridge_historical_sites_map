@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'terminal-table'
+require 'csv'
+
+location_idx = 0
+locations = []
+File.open(File.expand_path("../../data/manual_cleaning.txt",__FILE__), 'r').each_line do |line|
+  line.strip!
+  next if line == ""
+  if line =~ /^#{location_idx+1}\./
+    location_idx += 1
+  end
+  locations[location_idx] ||= []
+  locations[location_idx] << line
+end
+
+#table = Terminal::Table.new
+
+CSV{|csv|
+  csv << %w[
+    id title addr subtitle desc
+    years year year_start year_end year_approx year_other
+  ]
+
+  locations.each do |location|
+    id, title, addr, title2, *desc, years = location
+    
+    #p [id, title, addr, title2, desc, years]
+    
+    title ||= ""
+    title.strip!
+    title.gsub!(/,$/,'')
+
+    desc ||= []
+    desc = desc.join("\n")
+
+    case years
+    when /^(\d+),(\d*)$/
+      year = $1
+      approx_year = $2
+    when /^(\d+)-(\d*)$/
+      year = $1
+      start_date,end_date = $1, $2
+    when /^~(\d+)$/
+      year = $1
+      approx_year = $1
+    when /^(\d+)$/
+      year = $1
+      start_date = $1
+    else
+      #puts "WARN: #{years}"
+      other = years
+    end
+
+    csv << [
+      id.to_i, title, addr, title2, desc,
+      years,year.to_i,start_date.to_i,end_date.to_i,approx_year,other
+    ]
+  end
+}
+
+#puts table
+
