@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+require 'csv'
+require 'geocoder'
+i=0
+CSV{|csv|
+  csv << %w[id title addr subtitle desc years year year_start year_end year_approx year_other loc_addr loc_zip loc_lat loc_lng loc_type]
+  CSV.open(File.expand_path('../../data/parsed.csv',__FILE__)).each do |row|
+    id, title, addr, subtitle, desc, years, year, year_start, year_end, year_approx, year_other = row
+    #p [id, title, addr, subtitle, desc, years, year, year_start, year_end, year_approx, year_other]
+    geocode = nil
+    if addr =~ /^\d+ /
+      geocode = Geocoder.search("#{addr}, Cambridge, MA")
+    else
+      geocode = Geocoder.search(addr)
+    end
+    geocode = geocode.first
+
+    loc_addr = geocode.data["formatted_address"] rescue nil
+    loc_zip = geocode.data["address_components"].select{|a| a["types"].first == "postal_code"}.first["long_name"] rescue nil
+    loc_lat =  geocode.data["geometry"]["location"]["lat"] rescue nil
+    loc_lng =  geocode.data["geometry"]["location"]["lng"] rescue nil
+    loc_type =  geocode.data["geometry"]["location_type"] rescue nil
+
+    csv << [id, title, addr, subtitle, desc, years, year, year_start, year_end, year_approx, year_other, loc_addr, loc_zip, loc_lat, loc_lng, loc_type]
+    #exit if i > 2
+    i+=1
+    sleep 1
+  end
+}

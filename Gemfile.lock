@@ -1,10 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    geocoder (1.1.9)
     terminal-table (1.4.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  geocoder
   terminal-table (~> 1.4.5)
